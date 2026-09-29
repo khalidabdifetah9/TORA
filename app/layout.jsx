@@ -1,14 +1,16 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import {Poppins,Krona_One} from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const poppins=Poppins({
   subsets: ["latin"],
+  weight: ["400","500","600","700"],
+  variable:"--font-poppins",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const kronaOne = Krona_One({
   subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-krona",
 });
 
 export const metadata = {
@@ -20,7 +22,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${poppins.variable} ${kronaOne.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>

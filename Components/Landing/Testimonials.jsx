@@ -1,0 +1,190 @@
+"use client";
+
+import { useState } from "react";
+import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
+
+const headline = "Word on the street";
+
+const testimonials = [
+  {
+    quote:
+      "This is unbelievable. After setting up my home gym I have not missed a single workout in months.",
+    name: "Jennifer Musk",
+    role: "Project Manager @ Microsoft",
+    image: "/Landing_img/person1.jpg",
+  },
+  {
+    quote:
+      "The quality is far better than I expected. Solid, sturdy and it looks great in my living room.",
+    name: "Daniel Carter",
+    role: "Software Engineer @ Google",
+    image: "/Landing_img/person2.jpg",
+  },
+  {
+    quote:
+      "I cancelled my gym membership the week after it arrived. Best decision I made this year.",
+    name: "Sara Bennett",
+    role: "Designer @ Airbnb",
+    image: "/Landing_img/person3.jpg",
+  },
+];
+
+const ease = [0.22, 1, 0.36, 1];
+
+const container = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.2 } },
+};
+
+const headlineVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.12 } },
+};
+
+const word = {
+  hidden: { clipPath: "inset(0 100% 0 0)", x: -24, opacity: 0 },
+  visible: {
+    clipPath: "inset(0 0% 0 0)",
+    x: 0,
+    opacity: 1,
+    transition: { duration: 0.7, ease },
+  },
+};
+
+const fadeUp = {
+  hidden: { y: 30, opacity: 0 },
+  visible: { y: 0, opacity: 1, transition: { duration: 0.8, ease } },
+};
+
+export default function Testimonial() {
+  const [index, setIndex] = useState(0);
+  const words = headline.split(" ");
+  const current = testimonials[index];
+
+  const next = () => setIndex((index + 1) % testimonials.length);
+  const prev = () =>
+    setIndex((index - 1 + testimonials.length) % testimonials.length);
+
+  return (
+    <motion.section
+      variants={container}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+      className="bg-[#0a0a0a] px-6 py-16 text-white md:px-17.5 md:py-25"
+    >
+      <motion.p
+        variants={fadeUp}
+        className="mb-10 flex items-center gap-3 text-xl"
+      >
+        <span className="relative flex h-2 w-2">
+          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white opacity-75"></span>
+          <span className="relative inline-flex h-2 w-2 rounded-full bg-white"></span>
+        </span>
+        Testimonials
+      </motion.p>
+
+      <motion.h2
+        variants={headlineVariants}
+        className="mb-16 text-5xl font-semibold uppercase leading-none md:mb-20 md:text-7xl"
+      >
+        {words.map((w, i) => (
+          <motion.span
+            key={i}
+            variants={word}
+            className="mr-[0.25em] inline-block align-top"
+          >
+            {w}
+          </motion.span>
+        ))}
+      </motion.h2>
+
+      <motion.div
+        variants={fadeUp}
+        className="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-16"
+      >
+        <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#1a1a1a]">
+          <AnimatePresence initial={false} mode="wait">
+            <motion.div
+              key={index}
+              initial={{ clipPath: "inset(0 100% 0 0)" }}
+              animate={{ clipPath: "inset(0 0% 0 0)" }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.8, ease }}
+              className="absolute inset-0"
+            >
+              <Image
+                src={current.image}
+                alt={current.name}
+                fill
+                sizes="(min-width: 768px) 50vw, 100vw"
+                className="object-cover"
+              />
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        <div className="flex flex-col justify-between gap-12 md:py-6">
+          <AnimatePresence initial={false} mode="wait">
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.5, ease }}
+            >
+              <span className="mb-4 block h-16 text-8xl font-semibold leading-none text-[#de322d]">
+                “
+              </span>
+              <p className="text-3xl font-semibold leading-tight md:text-4xl">
+                {current.quote}
+              </p>
+            </motion.div>
+          </AnimatePresence>
+
+          <div className="flex items-end justify-between gap-6">
+            <AnimatePresence initial={false} mode="wait">
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.5, ease }}
+              >
+                <p className="font-poppins text-lg font-semibold">
+                  {current.name}
+                </p>
+                <p className="font-poppins text-base text-white/60">
+                  {current.role}
+                </p>
+              </motion.div>
+            </AnimatePresence>
+
+            <div className="flex flex-col items-end gap-3">
+              <span className="font-poppins text-sm tracking-[0.2em] text-white/60">
+                0{index + 1} / 0{testimonials.length}
+              </span>
+              <div className="flex">
+                <button
+                  onClick={prev}
+                  aria-label="Previous testimonial"
+                  className="h-14 w-14 border border-white/30 text-2xl transition-colors duration-300 hover:border-[#de322d] hover:bg-[#de322d]"
+                >
+                  ‹
+                </button>
+                <button
+                  onClick={next}
+                  aria-label="Next testimonial"
+                  className="h-14 w-14 border border-l-0 border-white/30 text-2xl transition-colors duration-300 hover:border-[#de322d] hover:bg-[#de322d]"
+                >
+                  ›
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+    </motion.section>
+  );
+}
