@@ -178,7 +178,7 @@ export default function Comparison() {
         className="relative h-[60vh] w-full overflow-hidden md:h-screen"
       >
         <Image
-          src="/Landing_img/Side_Img.avif"
+          src="/Landing_Img/Side_Img.avif"
           alt="Home gym equipment"
           fill
           sizes="(min-width: 768px) 50vw, 100vw"

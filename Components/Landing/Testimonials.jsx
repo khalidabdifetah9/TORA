@@ -18,7 +18,7 @@ const testimonials = [
     quote:
       "The quality is far better than I expected. Solid, sturdy and it looks great in my living room.",
     name: "Selamawit Hailu",
-    role: "Personal Buissness Owner",
+    role: "Personal Business Owner",
     image: "/Clients/client_two.avif",
   },
   {
@@ -57,14 +57,37 @@ const fadeUp = {
   visible: { y: 0, opacity: 1, transition: { duration: 0.8, ease } },
 };
 
+// The three states of a stacked image:
+// hidden = closed, previous = open underneath, active = wipes open on top
+const imageStates = {
+  hidden: {
+    clipPath: "inset(0 100% 0 0)",
+    transition: { duration: 0 },
+  },
+  previous: {
+    clipPath: "inset(0 0% 0 0)",
+    transition: { duration: 0 },
+  },
+  active: {
+    clipPath: "inset(0 0% 0 0)",
+    transition: { duration: 0.8, ease },
+  },
+};
+
 export default function Testimonial() {
   const [index, setIndex] = useState(0);
+  const [previousIndex, setPreviousIndex] = useState(null);
   const words = headline.split(" ");
   const current = testimonials[index];
 
-  const next = () => setIndex((index + 1) % testimonials.length);
+  const goTo = (newIndex) => {
+    setPreviousIndex(index);
+    setIndex(newIndex);
+  };
+
+  const next = () => goTo((index + 1) % testimonials.length);
   const prev = () =>
-    setIndex((index - 1 + testimonials.length) % testimonials.length);
+    goTo((index - 1 + testimonials.length) % testimonials.length);
 
   return (
     <motion.section
@@ -104,25 +127,32 @@ export default function Testimonial() {
         variants={fadeUp}
         className="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-16"
       >
+        {/* All images are on the page at once, so they are already loaded when you click */}
         <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#1a1a1a]">
-          <AnimatePresence initial={false} mode="wait">
-            <motion.div
-              key={index}
-              initial={{ clipPath: "inset(0 100% 0 0)" }}
-              animate={{ clipPath: "inset(0 0% 0 0)" }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.8, ease }}
-              className="absolute inset-0"
-            >
-              <Image
-                src={current.image}
-                alt={current.name}
-                fill
-                sizes="(min-width: 768px) 50vw, 100vw"
-                className="object-cover"
-              />
-            </motion.div>
-          </AnimatePresence>
+          {testimonials.map((item, i) => {
+            const status =
+              i === index ? "active" : i === previousIndex ? "previous" : "hidden";
+            const layer = status === "active" ? 2 : status === "previous" ? 1 : 0;
+
+            return (
+              <motion.div
+                key={item.name}
+                variants={imageStates}
+                initial={false}
+                animate={status}
+                style={{ zIndex: layer }}
+                className="absolute inset-0"
+              >
+                <Image
+                  src={item.image}
+                  alt={item.name}
+                  fill
+                  sizes="(min-width: 768px) 50vw, 100vw"
+                  className="object-cover"
+                />
+              </motion.div>
+            );
+          })}
         </div>
 
         <div className="flex flex-col justify-between gap-12 md:py-6">

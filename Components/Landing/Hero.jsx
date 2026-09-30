@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -85,11 +86,24 @@ const line = {
 };
 
 export default function Hero() {
+  // The animation waits until the image is ready
+  const [ready, setReady] = useState(false);
+  const imageRef = useRef(null);
+
+  useEffect(() => {
+    // The image may already be loaded from cache before React was ready
+    if (imageRef.current?.complete) setReady(true);
+
+    // Safety: start anyway after 3 seconds if the image is very slow
+    const timer = setTimeout(() => setReady(true), 3000);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <motion.section
       variants={section}
       initial="hidden"
-      animate="visible"
+      animate={ready ? "visible" : "hidden"}
       className="relative h-svh w-full overflow-hidden bg-[#0a0a0a] text-white"
     >
       <motion.div
@@ -98,12 +112,16 @@ export default function Hero() {
       >
         <motion.div variants={imageZoom} className="absolute inset-0">
           <Image
+            ref={imageRef}
             src="/Landing_Img/Hero_Img.avif"
             alt="Home gym"
             fill
             priority
+            quality={70}
             sizes="100vw"
-            className="object-cover object-[60%_center]"
+            onLoad={() => setReady(true)}
+            onError={() => setReady(true)}
+            className="object-cover"
           />
         </motion.div>
         <div className="absolute inset-0 bg-black/20" />
@@ -164,7 +182,11 @@ export default function Hero() {
 
             <div className="flex flex-col gap-3 sm:flex-row">
               {links.map((item) => (
-                <motion.div key={item.label} variants={fadeUp} className="flex-1">
+                <motion.div
+                  key={item.label}
+                  variants={fadeUp}
+                  className="flex-1"
+                >
                   <Link
                     href={item.href}
                     className={`group flex items-center justify-between border px-5 py-3.5 font-poppins text-xs uppercase tracking-[0.15em] transition-colors duration-300 md:py-4 md:text-sm ${
@@ -174,7 +196,6 @@ export default function Hero() {
                     }`}
                   >
                     {item.label}
-                   
                   </Link>
                 </motion.div>
               ))}
