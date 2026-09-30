@@ -4,40 +4,38 @@ import { motion } from "framer-motion";
 
 const features = [
   {
-    word: "Build",
-    title: "Strength at home",
-    text: "Everything you need to train every muscle group without leaving your living room.",
+    word: "Heavy Duty",
+    title: "Commercial Level steel",
+    text: "Imported industrial steel built to handle heavy bench presses, squats, and hard daily training.",
     offset: "md:ml-0",
   },
   {
-    word: "Durable",
-    title: "Made to last",
-    text: "Heavy-duty steel and premium materials that hold up through years of hard training.",
+    word: "Versatile",
+    title: "10+ Workouts in one",
+    text: "Multi angle bench adjustments for incline, decline, and flat lifts your entire gym in a single setup.",
     offset: "md:ml-[30%]",
   },
   {
-    word: "Compact",
-    title: "Space smart",
-    text: "Fold it, stack it, store it. A full gym that fits in the corner of any room.",
+    word: "Space Smart",
+    title: "Fits any room",
+    text: "Engineered for maximum stability without taking over your living area. Easy to position and store.",
     offset: "md:ml-[10%]",
   },
   {
-    word: "Support",
-    title: "Always with you",
-    text: "Setup guides, workout plans and a team ready to help whenever you need it.",
+    word: "Local",
+    title: "Fast delivery & support",
+    text: "Direct setup help, quick local delivery across Addis Ababa, and gear ready to train on day one.",
     offset: "md:ml-[40%]",
   },
 ];
 
 const ease = [0.22, 1, 0.36, 1];
 
-// Each row plays its children one after another
 const row = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.2 } },
 };
 
-// The big word is revealed from left to right
 const word = {
   hidden: { clipPath: "inset(0 100% 0 0)", x: -24, opacity: 0 },
   visible: {
@@ -48,13 +46,11 @@ const word = {
   },
 };
 
-// Small text fades up
 const fadeUp = {
   hidden: { y: 20, opacity: 0 },
   visible: { y: 0, opacity: 1, transition: { duration: 0.8, ease } },
 };
 
-// Line draws itself from left to right
 const line = {
   hidden: { scaleX: 0 },
   visible: { scaleX: 1, transition: { duration: 1.2, ease } },

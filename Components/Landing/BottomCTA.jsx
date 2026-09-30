@@ -13,13 +13,11 @@ const buttons = [
 
 const ease = [0.22, 1, 0.36, 1];
 
-// The section plays the image first, then the text
 const section = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.3 } },
 };
 
-// The image is wiped open from left to right
 const imageWipe = {
   hidden: { clipPath: "inset(0 100% 0 0)" },
   visible: {
@@ -28,25 +26,21 @@ const imageWipe = {
   },
 };
 
-// The image slowly settles from zoomed in to normal
 const imageZoom = {
   hidden: { scale: 1.3 },
   visible: { scale: 1, transition: { duration: 2.4, ease } },
 };
 
-// The text block plays its children one after another
 const textBlock = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.15 } },
 };
 
-// The headline plays its words one after another
 const headlineVariants = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.12 } },
 };
 
-// Each word is revealed from left to right
 const word = {
   hidden: { clipPath: "inset(0 100% 0 0)", x: -24, opacity: 0 },
   visible: {
@@ -57,7 +51,6 @@ const word = {
   },
 };
 
-// Simple fade up for everything else
 const fadeUp = {
   hidden: { y: 30, opacity: 0 },
   visible: { y: 0, opacity: 1, transition: { duration: 0.8, ease } },
@@ -81,7 +74,7 @@ export default function CTA() {
       >
         <motion.div variants={imageZoom} className="absolute inset-0">
           <Image
-            src="/Benches/bench_three.png"
+            src="/Benches/bench_three.avif"
             alt="Home gym"
             fill
             sizes="100vw"
