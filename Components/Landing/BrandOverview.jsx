@@ -3,12 +3,12 @@
 import { motion } from "framer-motion";
 
 const headline =
-  "Over the years, we've partnered with startups. Delivering solutions and measurable results.";
+  "Over the years, we've equipped hundreds of home lifters across addis ababa delivering commercial grade gear";
 
 const stats = [
-  { number: "120+", label: "Projects delivered" },
-  { number: "8", label: "Years in business" },
-  { number: "35", label: "Startups launched" },
+  { number: "100+", label: "Active Customer" },
+  { number: "4+", label: "Years in business" },
+  { number: "10+", label: "Workouts From One Bench" },
 ];
 
 const ease = [0.22, 1, 0.36, 1];
@@ -85,18 +85,19 @@ export default function BrandOverview() {
           variants={fadeUp}
           className="max-w-[500px] font-poppins text-base leading-snug text-white/75"
         >
-          Montreals was founded with a simple vision: to help businesses
-          transform ideas into impactful digital experiences. What started as a
-          small creative studio has grown into a multidisciplinary agency
-          specializing in branding, web design and development.
+          ወንዳወንድ Home Gym was founded with a simple vision: to give every lifter
+          access to professional grade equipment without the hassle of a crowded
+          gym. What started as a effort to source reliable gear has grown into a
+          premier supplier of multi functional home fitness stations.
         </motion.p>
         <motion.p
           variants={fadeUp}
           className="max-w-[500px] font-poppins text-base leading-snug text-white/75"
         >
-          Over the years, we have partnered with startups, growing businesses,
-          and established organizations, delivering thoughtful solutions that
-          combine creativity, strategy, and measurable results.
+          Tired of waiting 45 minutes for that guy to finish scrolling TikTok on
+          the flat bench? Get your own bench from ወንዳወንድ Home
+          Gym and actually get your workout done in the comfort of your own
+          home.
         </motion.p>
       </div>
 

@@ -4,29 +4,29 @@ import { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 
-const headline = "Word on the street";
+const headline = "Lifter Feedback";
 
 const testimonials = [
   {
     quote:
       "This is unbelievable. After setting up my home gym I have not missed a single workout in months.",
-    name: "Jennifer Musk",
-    role: "Project Manager @ Microsoft",
-    image: "/Landing_img/person1.jpg",
+    name: "Natnael Tadesse",
+    role: "Project Manager",
+    image: "/Clients/client_one.avif",
   },
   {
     quote:
       "The quality is far better than I expected. Solid, sturdy and it looks great in my living room.",
-    name: "Daniel Carter",
-    role: "Software Engineer @ Google",
-    image: "/Landing_img/person2.jpg",
+    name: "Selamawit Hailu",
+    role: "Personal Buissness Owner",
+    image: "/Clients/client_two.avif",
   },
   {
     quote:
-      "I cancelled my gym membership the week after it arrived. Best decision I made this year.",
-    name: "Sara Bennett",
-    role: "Designer @ Airbnb",
-    image: "/Landing_img/person3.jpg",
+      "My school schedule is crazy, but this bench makes hitting my daily workouts super easy.",
+    name: "Yada Zelalem",
+    role: "Student",
+    image: "/Clients/client_three.avif",
   },
 ];
 

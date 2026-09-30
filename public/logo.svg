@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 1280 1280"
+     width="1280" height="1280">
+  <title>Fitness Brand Logo</title>
+  <desc>Scalable white geometric logo traced from the supplied image.</desc>
+  <g fill="#FFFFFF">
+    <!-- Main left mark -->
+    <path d="M871 318 L370 319 L505 451 L510 407 L668 408 L493 703 L188 368 L502 914 Z"/>
+    <!-- Right mark -->
+    <path d="M1092 368 L787 703 L716 585 L662 705 L784 907 Z"/>
+  </g>
+</svg>

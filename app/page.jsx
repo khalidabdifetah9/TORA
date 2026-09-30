@@ -5,6 +5,8 @@ import Features from "@/Components/Landing/Features";
 import WorkoutGuide from "@/Components/Landing/WorkoutGuide";
 import FAQ from "@/Components/Landing/FAQ";
 import Testimonial from "@/Components/Landing/Testimonials";
+import CTA from "@/Components/Landing/BottomCTA";
+import Footer from "@/Components/Landing/Footer";
 export default function Home() {
   return (
     <>
@@ -15,6 +17,8 @@ export default function Home() {
         <WorkoutGuide/>
         <Testimonial/>
         <FAQ/>
+        <CTA/>
+        <Footer/>
     </>
   );
 }

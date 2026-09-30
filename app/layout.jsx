@@ -1,10 +1,11 @@
-import {Poppins,Krona_One} from "next/font/google";
+import { Poppins, Krona_One } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/Components/Landing/Navbar";
 
-const poppins=Poppins({
+const poppins = Poppins({
   subsets: ["latin"],
-  weight: ["400","500","600","700"],
-  variable:"--font-poppins",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-poppins",
 });
 
 const kronaOne = Krona_One({
@@ -24,7 +25,10 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${poppins.variable} ${kronaOne.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <Navbar />
+        {children}
+      </body>
     </html>
   );
 }
