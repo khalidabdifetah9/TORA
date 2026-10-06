@@ -77,7 +77,6 @@ export default function Hero() {
       animate={ready ? "visible" : "hidden"}
       className="relative h-svh w-full overflow-hidden bg-[#0a0a0a] text-white"
     >
-      {/* Background image */}
       <motion.div
         variants={imageWipe}
         className="absolute inset-0 overflow-hidden"
@@ -85,7 +84,7 @@ export default function Hero() {
         <motion.div variants={imageZoom} className="absolute inset-0">
           <Image
             ref={imageRef}
-            src="/Landing_Img/hero_img.avif"
+            src="/Landing_Img/Hero_Img.avif"
             alt="Home gym"
             fill
             priority
@@ -96,18 +95,15 @@ export default function Hero() {
           />
         </motion.div>
 
-        {/* Heavy bottom fade for legible text, soft left fade on desktop */}
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/10" />
         <div className="absolute inset-0 hidden bg-gradient-to-r from-black/60 via-transparent to-transparent lg:block" />
       </motion.div>
 
-      {/* Content */}
       <motion.div
         variants={content}
         className="absolute inset-0 flex flex-col justify-end px-6 pb-6 pt-24 md:px-17.5 md:pb-10"
       >
         <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between lg:gap-16">
-          {/* Headline: each line rises out of a mask */}
           <motion.h1
             variants={headlineVariants}
             className="text-[10.5vw] font-black uppercase leading-[0.92] tracking-tight sm:text-[9vw] lg:text-[7.2vw]"
@@ -121,7 +117,6 @@ export default function Hero() {
             ))}
           </motion.h1>
 
-          {/* Paragraph + buttons */}
           <div className="flex w-full max-w-md flex-col gap-6 lg:pb-3">
             <motion.p
               variants={fadeUp}
@@ -146,7 +141,6 @@ export default function Hero() {
                         : "border-white/40 text-white hover:border-[#d4d4d4] hover:text-black"
                     }`}
                   >
-                    {/* sliding fill */}
                     <span
                       aria-hidden="true"
                       className={`absolute inset-0 -translate-x-full transition-transform duration-500 ease-out group-hover:translate-x-0 ${
@@ -161,7 +155,6 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Hairline */}
         <motion.div
           variants={line}
           className="mb-5 mt-8 h-px origin-left bg-white/30 md:mb-6 md:mt-10"
