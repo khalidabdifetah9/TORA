@@ -142,11 +142,11 @@ export default function WorkoutGuide() {
                   {item.muscles}
                 </p>
 
-                <div className="mb-4 h-px w-full bg-white/40 transition-colors duration-300 group-hover:bg-[#de322d]" />
+                <div className="mb-4 h-px w-full bg-white/40 transition-colors duration-300 group-hover:bg-[#d4d4d4]" />
 
                 <p className="flex items-center justify-between font-poppins text-sm uppercase tracking-[0.2em]">
                   Explore guide
-                  <span className="text-2xl transition-transform duration-300 group-hover:translate-x-2 group-hover:text-[#de322d]">
+                  <span className="text-2xl transition-transform duration-300 group-hover:translate-x-2 group-hover:text-[#d4d4d4]">
                     →
                   </span>
                 </p>

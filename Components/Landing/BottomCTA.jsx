@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 const headline = "Your Entire Gym. Right at Home.";
 
 const buttons = [
-  { label: "Order Product", href: "/order", main: true },
+  { label: "Contact Us", href: "/contact_us", main: true },
   { label: "View Products", href: "/products", main: false },
 ];
 
@@ -67,7 +67,6 @@ export default function CTA() {
       viewport={{ once: true, amount: 0.3 }}
       className="relative h-svh w-full overflow-hidden bg-[#0a0a0a] text-white"
     >
-      {/* Full screen image */}
       <motion.div
         variants={imageWipe}
         className="absolute inset-0 overflow-hidden"
@@ -126,8 +125,8 @@ export default function CTA() {
               href={item.href}
               className={`group flex items-center justify-between gap-10 border px-6 py-4 font-poppins text-xs uppercase tracking-[0.15em] transition-colors duration-300 md:py-5 md:text-sm ${
                 item.main
-                  ? "border-[#de322d] bg-[#de322d] hover:bg-transparent"
-                  : "border-white/40 bg-black/20 backdrop-blur-md hover:border-[#de322d] hover:text-[#de322d]"
+                  ? "border-[#d4d4d4] text-black hover:text-white bg-[#d4d4d4] hover:bg-transparent"
+                  : "border-white/40 bg-black/20 backdrop-blur-md hover:border-[#d4d4d4] hover:text-[#d4d4d4]"
               }`}
             >
               {item.label}
