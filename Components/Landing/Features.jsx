@@ -12,7 +12,7 @@ const features = [
   {
     word: "Versatile",
     title: "26+ EXERCISES",
-    text: "Incline, decline, flat, pull ups, dips, and more giving you more ways to train",
+    text: "Incline, decline, flat, pull ups, dips, and more giving you more ways to train at home",
     offset: "md:ml-[30%]",
   },
   {
