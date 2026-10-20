@@ -21,7 +21,7 @@ const cards = [
 ];
 
 const includes = [
-  "Step-by-step exercises",
+  "Step by step exercises",
   "Sets and reps for every level",
   "Built for home training",
 ];
